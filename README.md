@@ -53,7 +53,7 @@ apt install libgmp-dev
 Clone this repository
 
 ```
-git clone https://github.com/albertobsd/ecctools.git
+git clone https://github.com/gadzi/ecctools.git
 ```
 
 Compile:
