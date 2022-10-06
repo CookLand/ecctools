@@ -317,13 +317,3 @@ Example of use:
 
 `-i` input file `-o` output file, if the -o option is omited the
 
-
-## Do you wanna more programs here?
-
-Well just ask for the program that you want. But please don't be annoying, I do this for hobby and fun.
-
-Use the Issue section or the bitcointalk topic:
-
-https://github.com/albertobsd/ecctools/issues
-
-https://bitcointalk.org/index.php?topic=5361234.0
