@@ -334,9 +334,3 @@ Use the Issue section or the bitcointalk topic:
 https://github.com/albertobsd/ecctools/issues
 
 https://bitcointalk.org/index.php?topic=5361234.0
-
-## Donations:
-
-- BTC: 1Coffee1jV4gB5gaXfHgSHDz9xx9QSECVW
-- ETH: 0x6222978c984C22d21b11b5b6b0Dd839C75821069
-- DOGE: DKAG4g2HwVFCLzs7YWdgtcsK6v5jym1ErV
