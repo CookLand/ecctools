@@ -1,17 +1,10 @@
 # ecctools
-Small collection of tools written in C for ECC and bitcoin
+Небольшая коллекция инструментов, написанных на C для ECC и биткойнов
 
-## Why this programs are written in C language?
-Well i like C language because compiled code is faster than interpreted code.
-
-## Warning
-
-- This repository include a small ECDSA Cryptography library.
-- This library was made by myself reading the documentaion but it can have some bugs.
-- I already implement the use of secure memory provided by the gcrypt library.
-- I just solved https://github.com/albertobsd/ecctools/issues/16
-- Use it by your own risk.
-- I use this tools in my  daily basis with my own private key.
+## Предупреждение
+- Этот репозиторий включает небольшую библиотеку криптографии ECDSA.
+- Эта библиотека была сделана по документации, но в ней могут быть ошибки.
+- Используйте его на свой страх и риск.
 
 ```
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -23,21 +16,21 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
-## List of tools in this repository
+## Список инструментов в этом репозитории
 
-- [keygen](https://github.com/albertobsd/ecctools#keygen)
-- [sharedsecret](https://github.com/albertobsd/ecctools#sharedsecret)
-- [rehashaddress](https://github.com/albertobsd/ecctools#rehashaddress)
-- [calculatefromkey](https://github.com/albertobsd/ecctools#calculatefromkey)
-- [calculatefrompublickey](https://github.com/albertobsd/ecctools#calculatefrompublickey)
-- [keydivision](https://github.com/albertobsd/ecctools#keydivision)
-- [keymath](https://github.com/albertobsd/ecctools#keymath)
-- [modmath](https://github.com/albertobsd/ecctools#modmath)
-- [addr2rmd](https://github.com/albertobsd/ecctools#addr2rmd)
+- [keygen](https://github.com/CookLand/ecctools#keygen)
+- [sharedsecret](https://github.com/CookLand/ecctools#sharedsecret)
+- [rehashaddress](https://github.com/CookLand/ecctools#rehashaddress)
+- [calculatefromkey](https://github.com/CookLand/ecctools#calculatefromkey)
+- [calculatefrompublickey](https://github.com/CookLand/ecctools#calculatefrompublickey)
+- [keydivision](https://github.com/CookLand/ecctools#keydivision)
+- [keymath](https://github.com/CookLand/ecctools#keymath)
+- [modmath](https://github.com/CookLand/ecctools#modmath)
+- [addr2rmd](https://github.com/CookLand/ecctools#addr2rmd)
 
-## How to download and run the code?
+## Как скачать и запустить код?
 
-For Termux users you need to install some utilities 
+Для пользователей Termux вам необходимо установить некоторые утилиты 
 
 ```
 apt update && apt upgrade
@@ -50,13 +43,13 @@ apt install libgmp-dev
 
 ```
 
-Clone this repository
+Клонировать этот репозиторий:
 
 ```
 git clone https://github.com/CookLand/ecctools.git
 ```
 
-Compile:
+Скомпилировать командой:
 
 ```
 make
@@ -64,24 +57,24 @@ make
 
 ## keygen
 
-This tool generate one private and his address/publickey compressed and uncompressed at request.
+Этот инструмент генерирует один частный и его адрес / открытый ключ, сжатый и несжатый по запросу..
 
-you can specify the bit size from 1 to 256 with `-b value` where `value` is the number of bits in your key.
-if you don't specify this value the bit may vary from 1 to 256, this will depend only of the RNG
+Вы можете указать размер в битах от 1 до 256 с помощью `-b значение`, где `значение` это количество битов в вашем ключе.
+если вы не укажете это значение бит может варьироваться от 1 до 256, это будет зависеть только от RNG
 
-Also you can select the random source for this key `-s source`, where `sourse` is one of the next values.
-The default source is `urandom`
+Также вы можете выбрать случайный источник для этого ключа `-s источник`, где `источник` это одно из следующих значений.
+Источник по умолчанию `urandom`
 
-- `urandom` to use the linux device `/dev/urandom`
-- `random` to use the linux device `/dev/random`
-- `openssl` to use the RND build in openssl library
-- `getrandom` to use the linux kernet funtcion getrandom, this may be equivalen to urandom in some kernels
-- `gcrypt` to use RND build in gcrypt library 
+- `urandom` использовать Linux-устройство `/dev/urandom`
+- `random` использовать Linux-устройство `/dev/random`
+- `openssl` использовать RND собрать в библиотеке openssl
+- `getrandom` использовать функцию ядра Linux getrandom, это может быть эквивалентно urandom в некоторых ядрах
+- `gcrypt` использовать сборку RND в библиотеке gcrypt
 
-example:
+Пример:
 
 ```
-albertobsd $ ./keygen
+CookLand $ ./keygen
 KEY (Secret: DON'T SHARE THIS VALUE): 18f619c4d16057d362ddfce772f551d46a2390517698226cff6e5bf67ac4b324
 publickey uncompressed: 04af6e50db92ce378c29df0ed9a04d3431bc06762aa37ec3ab42af14708363059616992ab8abb4bd8cfcc7d8c8d40331d419f426d7fc8490efb1af47b6316d7a1b
 address uncompressed 1CXHD79mKUxUDruD2iEJxs8XBwiJwYGmTR
@@ -92,15 +85,15 @@ address compressed 1PTA5NaUfu5xU5pEmEfobsZbRuWvs4Sik3
 
 ## sharedsecret
 
-In cryptography is important to have a shared secret with the person who you are communicating.
-But is also very important to have a way to communicate this secret without disclose it to all the world.
+В криптографии важно иметь общий секрет с человеком, с которым вы общаетесь.
+Но также очень важно иметь способ передать эту тайну, не раскрывая ее всему миру.
 
-This tool calculate that shared secret with your privatekey and the publickey of the other person.
+Этот инструмент вычисляет этот общий секрет с вашим закрытым ключом и открытым ключом другого человека.
 
-Alice (you) want to send a encrypted file to Bob (Other person)
-Alice have his own privatekey and Alice know the Publickey of Bob.
+Алиса (вы) хотите отправить зашифрованный файл Бобу (другому человеку)
+У Алисы есть свой закрытый ключ, и Алиса знает открытый ключ Боба.
 
-Alice use this tool to calcualte the share secret to be use to encrypt the file.
+Алиса использует этот инструмент для вычисления общего секрета, который будет использоваться для шифрования файла.
 
 Alice example Keys:
 Private key: 18f619c4d16057d362ddfce772f551d46a2390517698226cff6e5bf67ac4b324 (Unknow for Bob and everyone else)
@@ -110,7 +103,7 @@ Bob example Keys:
 Private key: bc9e78f140a76cbdcdbecc5ab0ec38b4db710edfa40dea342712c8a695fe8b22 (Unknow for Alice and everyone else)
 Public key : 022c8191049a3f2816bc95077b91caed87900d0cd2af3757004531face9c3b6082 (Public)
 
-Alice run the program:
+Алиса запускает программу:
 
 ```
 ./sharedsecret
@@ -127,34 +120,34 @@ A: private key (hex): bc9e78f140a76cbdcdbecc5ab0ec38b4db710edfa40dea342712c8a695
 B: public key : 03af6e50db92ce378c29df0ed9a04d3431bc06762aa37ec3ab42af147083630596
 Secret between A and B: 22fb667f3bc1a2153e3cef75df0ce757a1c86051c07ace6b0c30dc87f3358511 (DON'T SHARE, THIS IS SECRET)
 ```
-Alice and  Bob get the same shared secret only sharing their own PUBLIC keys to each other.
+Алиса и Боб получают один и тот же общий секрет, только делясь друг с другом своими ОТКРЫТЫМИ ключами.
 
-Alice procced to encrypt their secret file `input.txt` with the password `22fb667f3bc1a2153e3cef75df0ce757a1c86051c07ace6b0c30dc87f3358511`
+Алиса зашифровала свой секретный файл `input.txt` с паролем `22fb667f3bc1a2153e3cef75df0ce757a1c86051c07ace6b0c30dc87f3358511`
 
 openssl aes-256-cbc -salt -pbkdf2 -in input.txt -out input.txt.enc
 
-Bob decrypt the secret file with the command using the same password `22fb667f3bc1a2153e3cef75df0ce757a1c86051c07ace6b0c30dc87f3358511`:
+Боб расшифровывает секретный файл командой, используя тот же пароль `22fb667f3bc1a2153e3cef75df0ce757a1c86051c07ace6b0c30dc87f3358511`:
 
 openssl aes-256-cbc -d -salt -pbkdf2 -in input.txt.enc -out message.txt
 
-Note for cryptographers this is just a basic proof of concept, i know that the comunication channel can be compromised, 
-there are mitm attacks, there is no authentication or integrity of the data etc...
+Примечание для криптографов, это просто базовое доказательство концепции, я знаю, что канал связи может быть скомпрометирован,
+есть атаки mitm, нет аутентификации или целостности данных и т.д...
 
 ## rehashaddress
 
-A NON standard, deterministic private key generator from a password or passphrase.
+НЕстандартный, детерминированный генератор закрытых ключей из пароля или кодовой фразы.
 
-what is the objective of this tool? just provide a easy way to generate deterministics privatekeys from a selected password or passphrase and number of rehashes
+какова цель этого инструмента? просто предоставьте простой способ генерировать детерминированные закрытые ключи из выбранного пароля или фразы-пароля и количества повторных хэшей
 
 Advice: USE A SECURE PASSWORD
 
-Example of use
+Пример использования:
 
-Generate 2 privatekeys and his address after 100 thausand of rehahes
+Сгенерировать 2 приватных ключа и его адрес после 100 тысяч повторений
 
 ```./rehashaddress -p "}78~Et=jPQP5}MVVj2fc0X38{~I}?c" -n 2 -m 100000```
 
-Output:
+Выход:
 
 ```
 [I] Password: }78~Et=jPQP5}MVVj2fc0X38{~I}?c
@@ -172,7 +165,7 @@ Uncompress publickey: 046813442784ee62c0d69dcf244f91518e85f4a796a1b967758aef1b7d
 Uncompress address: 1Ho9VcvHcdu5Xrkv3pcME5zaPvyje1AWnM
 ```
 
-Please check the comments in the source code `rehashaddress.c`
+Пожалуйста, проверьте комментарии в исходном коде `rehashaddress.c`
 
 
 ## calculatefromkey
