@@ -88,5 +88,5 @@ int main(int argc, char **argv)  {
 			mpz_mod(C,C,EC.n);
 		break;		
 	}
-	gmp_printf("Result: %Zx\n\n",C);	
+	gmp_printf("= 0x%Zx\n",C);	
 }
